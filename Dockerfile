@@ -48,15 +48,12 @@ RUN a2enmod rewrite
 RUN a2enmod headers
 
 # Oracle instantclient - OCI
-ADD instantclient/instantclient-basiclite-linux.x64-12.2.0.1.0.zip /tmp/
-ADD instantclient/instantclient-sdk-linux.x64-12.2.0.1.0.zip /tmp/
+ADD instantclient/instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip /tmp/
+ADD instantclient/instantclient-sdk-linux.x64-19.18.0.0.0dbru.zip /tmp/
 
-RUN unzip /tmp/instantclient-basiclite-linux.x64-12.2.0.1.0.zip -d /usr/local/
-RUN unzip /tmp/instantclient-sdk-linux.x64-12.2.0.1.0.zip -d /usr/local/
-
-RUN ln -s /usr/local/instantclient_12_2 /usr/local/instantclient
-RUN ln -s /usr/local/instantclient/libclntsh.so.12.1 /usr/local/instantclient/libclntsh.so
-RUN ln -s /usr/local/instantclient/libocci.so.12.1 /usr/local/instantclient/libocci.so
+RUN unzip /tmp/instantclient-basiclite-linux.x64-19.18.0.0.0dbru.zip -d /usr/local/
+RUN unzip /tmp/instantclient-sdk-linux.x64-19.18.0.0.0dbru.zip -d /usr/local/
+RUN ln -s /usr/local/instantclient_19_18 /usr/local/instantclient
 
 ENV LD_LIBRARY_PATH=/usr/local/instantclient
 RUN echo 'instantclient,/usr/local/instantclient' | pecl install oci8
